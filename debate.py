@@ -18,7 +18,6 @@ class DebateTimer:
         self.setup_initial_screen()
 
     def setup_initial_screen(self):
-        """Configura la pantalla inicial para preguntar por el número de comités."""
         self.initial_frame = tk.Frame(self.root)
         self.initial_frame.pack(pady=20)
         
@@ -30,8 +29,7 @@ class DebateTimer:
         
         tk.Button(self.initial_frame, text="Continuar", command=self.set_committee_count).pack(pady=5)
 
-    def set_committee_count(self):
-        """Toma el número de comités y solicita los nombres de cada comité."""
+    def set_committee_count(self): 
         try:
             self.committee_count = self.committee_count_var.get()
             if self.committee_count < 1:
@@ -42,7 +40,6 @@ class DebateTimer:
             messagebox.showerror("Error", "Por favor ingresa un número válido de comités.")
 
     def ask_committee_names(self):
-        """Pantalla para solicitar los nombres de los comités."""
         self.names_frame = tk.Frame(self.root)
         self.names_frame.pack(pady=20)
         
@@ -58,13 +55,11 @@ class DebateTimer:
         tk.Button(self.names_frame, text="Comenzar Debate", command=self.save_committee_names).pack(pady=10)
 
     def save_committee_names(self):
-        """Guarda los nombres de los comités y configura la pantalla del temporizador."""
         self.committees = [name.get() for name in self.committee_names]
         self.names_frame.destroy()
         self.setup_timer_screen()
 
     def setup_timer_screen(self):
-        """Configura la pantalla del temporizador."""
         self.timer_frame = tk.Frame(self.root)
         self.timer_frame.pack(pady=20)
         
@@ -95,7 +90,7 @@ class DebateTimer:
         tk.Button(self.timer_frame, text="Reiniciar", command=self.reset_timer).pack(side=tk.LEFT, padx=10)
 
     def update_timer(self):
-        """Actualiza el tiempo restante en el reloj."""
+        # Actualiza el tiempo restante en el reloj.
         if self.timer_running and self.time_left > 0:
             minutes = self.time_left // 60
             seconds = self.time_left % 60
@@ -114,29 +109,24 @@ class DebateTimer:
             self.next_committee()
 
     def start_timer(self, minutes):
-        """Inicia el temporizador con un número de minutos."""
         self.time_left = minutes * 60
         self.timer_running = True
         self.update_timer()
 
     def pause_timer(self):
-        """Pausa el temporizador."""
         self.timer_running = False
 
     def resume_timer(self):
-        """Reanuda el temporizador."""
         if not self.timer_running and self.time_left > 0:
             self.timer_running = True
             self.update_timer()
 
     def reset_timer(self):
-        """Reinicia el temporizador al comité actual."""
         self.time_left = 0
         self.timer_running = False
         self.time_label.config(text="00:00", fg="black")
 
     def next_committee(self):
-        """Pasa al siguiente comité cuando se acaba el tiempo."""
         self.current_committee = (self.current_committee + 1) % len(self.committees)
         self.committee_label.config(text=f"Tiene la palabra: {self.committees[self.current_committee]}")
         for i, label in enumerate(self.committee_labels):
@@ -146,7 +136,7 @@ class DebateTimer:
                 label.config(fg="black")
         messagebox.showinfo("Tiempo Finalizado", f"Es el turno de {self.committees[self.current_committee]}.")
 
-if __name__ == "__main__":
+if __name__ ==:
     root = tk.Tk()
     app = DebateTimer(root)
     root.mainloop()
