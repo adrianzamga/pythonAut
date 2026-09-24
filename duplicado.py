@@ -1,6 +1,6 @@
 import pandas as pd
 
-df = pd.read_excel("Reporte Alumnos Inscritos.xlsx")
+df = pd.read_excel(".xlsx")
 
 # Revisa los primeros datos
 print(df.head())
