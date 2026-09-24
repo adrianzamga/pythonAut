@@ -1,7 +1,7 @@
 import pandas as pd
 
-az1 = pd.read_excel('C:/xampp/htdocs/Python - copia/pupils.xlsx', usecols="A") # S
-az2 = pd.read_excel('C:/xampp/htdocs/Python - copia/ZA.xlsx', usecols="A") # C
+az1 = pd.read_excel('C:/xampp/htdocs/Python - copia/.xlsx', usecols="A") # S
+az2 = pd.read_excel('C:/xampp/htdocs/Python - copia/.xlsx', usecols="A") # C
 
 az1.columns = ['Id']
 az2.columns = ['Matricula']
